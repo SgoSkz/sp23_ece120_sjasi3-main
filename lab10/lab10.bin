@@ -1,0 +1,30 @@
+; This is the file you will use for the lab assignment
+; Make sure to comment your code properly and don't exceed 
+; the line limitation for this assignment.  Good luck!
+
+0011 0001 0000 0000 ; x3100 - starting address of the program
+
+; The program description and code starts here
+; Sean W Jasin, sjasi3, 672969187   Apr 14 '23
+;   This program takes 10 numbers and adds only the positive ones
+;   to R5 register 
+; Register Table
+;   R0: R3 val    | R1: Unused    | R2: Unused
+;   R3: Ptr to arr| R4: Counter   | R5: Result 
+
+; Initializing Variables
+1110 011 000110001      ; R3 <- x3101 + 3*16 + 1        Save the array location in R3
+0101 100 101 0 00000    ; R4 <- AND R4, b00000          Init R4 to b00000
+0001 100 100 1 01010    ; R4 <- ADD R4, b01010          Add 10 to R4 and store in R4
+0101 101 101 0 00000    ; R5 <- AND R5, b00000          Init R5 to b00000
+
+; Loop
+0110 000 011 000000     ; Load value at memory stored in R3 into R0
+0000 110 000000001      ; If number is positive skip next instruction
+0001 101 101 0 00 000   ; Add R0 to R5
+0001 011 011 1 00001    ; Move R3 to next location
+0001 100 100 1 11111    ; Decrement R4 counter
+0000 001 111111010      ; If the last value was positive, jump back
+
+; HALT
+1111 0000 0010 0101     ; HALT CODE

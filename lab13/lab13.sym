@@ -1,0 +1,15 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	N_LET             3013
+//	N_COL             301A
+//	N_ROW             3023
+//	L_LOC             302E
+//	LN                3035
+//	ZEROS             3036
+//	ONES              3037
+//	D_LOC             3038
+//	STOP              3039
+//	FONT_DATA         303A
+

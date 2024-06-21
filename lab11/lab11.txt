@@ -1,0 +1,30 @@
+Question 1: Describe the errors that occur when trying to assemble lab11.asm. Identify the cause of each error.
+
+STARTING PASS 1
+ 14: illegal operands for missing opcode    -> Line 14: We did not tell what x3000 means because there is no .ORIG
+ 16: instruction appears before .ORIG       -> Line 16: The first instruction appears, but we do not know where .ORIG is
+ 17: constant outside of allowed range      -> Line 17: x3010 is not in the allowed range of values
+ 19: illegal operands for ADD               -> Line 19: There are more commas than necessary
+ 30: constant outside of allowed range      -> Line 30: x300F is not in the allowed range of values
+ 32: label OUTERLOOP has already appeared   -> Line 32: BRpz should be BRzp
+   R3,,R3,R26 errors found in first pass.
+ 35: unknown label "xxxx"                   -> Line 35: xxxx is not an existing label
+ 42: no .END directive found!               -> Last line: .END does not exist
+
+
+Question 2: For each label in your code (with all bugs fixed), write down the corresponding memory location. 
+
+OUTERLOOP   -> x3004
+INNERLOOP   -> x3005
+INPUT       -> x300E
+ZERO        -> x300F                        -> ZERO             NOTE: Added by student
+NEONE       -> x3010                        -> NEgative ONE     NOTE: Added by student
+RESULT      -> x3011
+
+
+Question 3: Between using labels and explicit memory locations/offsets, which one makes the most sense, and why?
+
+Using labels makes more sense than explicit locations/offsets. When changing
+the code or adding in between, explicit locations/offsets are bound to change,
+this can be mitigated by using labels as those labels can be placed anywhere
+and still hold the value we want when accessing said label
